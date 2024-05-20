@@ -33,3 +33,27 @@ Output:
 pineapple
 350
 ```
+_________________________________________________________________________
+```
+3)
+var a=10
+var b="ashmi"
+var c=null
+var d=true
+var e
+console.log(a)
+console.log(b)
+console.log(c)
+console.log(d)
+console.log(e)
+```
+## OUTPUT
+```
+Output:
+
+10
+ashmi
+null
+true
+undefined
+```
