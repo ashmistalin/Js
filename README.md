@@ -140,8 +140,44 @@ def vigenere_decrypt(ciphertext, key):
     plaintext = []
     key_chars = [c.upper() for c in key]
     key_len = len(key_chars)
-    text_len = len(ciph…
-[22:50, 24/05/2024] Ilaya👻: def rail_fence_encrypt(plaintext, rails):
+    text_len = len(ciphertext)
+    key_index = 0
+
+    for i in range(text_len):
+        if ciphertext[i].isalpha():
+            shift = (ord(key_chars[key_index]) - ord('A'))
+            decrypted_char = chr((ord(ciphertext[i].upper()) - ord('A') - shift + 26) % 26 + ord('A'))
+            plaintext.append(decrypted_char)
+            key_index = (key_index + 1) % key_len
+        else:
+            plaintext.append(ciphertext[i])
+
+    return ''.join(plaintext)
+
+def main():
+    print("Choose an option:")
+    print("1. Encryption")
+    print("2. Decryption")
+    choice = int(input("Enter your choice: "))
+
+    plaintext = input("Enter the text: ").strip()
+    key = input("Enter the key: ").strip()
+
+    if choice == 1:
+        ciphertext = vigenere_encrypt(plaintext, key)
+        print("Encrypted Text: ", ciphertext)
+    elif choice == 2:
+        decrypted_text = vigenere_decrypt(plaintext, key)
+        print("Decrypted Text: ", decrypted_text)
+    else:
+        print("Invalid choice.")
+
+if _name_ == "_main_":
+    main()
+```
+
+```
+def rail_fence_encrypt(plaintext, rails):
     ciphertext = [''] * len(plaintext)
     rail_fence = [[''] * len(plaintext) for _ in range(rails)]
 
